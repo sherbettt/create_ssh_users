@@ -28,21 +28,23 @@
         ssh_key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICs2D9gDCisPyK8PebbaQCTqI5Rrmn1yrXXqLG1FDa0o kirill_p@kirill-bmhwdx9"
       - name: vyartsev
         ssh_key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIMcztse1AO+7KCBxq2abuvNlQIbAh7KMt/kh/6hRlhb vyache@vyache"
+      - name: kovalev
+        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDULgE4kNJ3nhguJk8TegZymS/ZOIeWwG61ehQ77QnlpKjXPoB4GHCp83qh9YbHc2YuES3BLnqYB2+MqAmEVWSPslMzzh2SqIwZuTqDWcTlDIOZHVBd8OwINyVdLKc+OmUW2hiDpuISpq3h5CKlUQ9VWSR4XC2ri0nvCln9R9ReCj8yV5fBMsOIZnbo3n52I46HJ/09o27dPxxbyLTq8UOA3PBBA25ZwL7kludosTamB4xMnIP/nToCf97L7BpjWIVuvcp7Zw6apr5HeEl1Ss7VIHPeVzg73+SdjaC9o3nS9fo8nmHpbosh5KpebtZskq+vx9wzFHvTh67y3ZLcymT64oJDl5pqoCK8/N+9eFatt2w5u6iZrCndLQQCiO8UQVXzEZFw4LkI2xuz15t2kVnrSoZ4H6beob5LgYjuwr010tIECLDJAdnuIHv70czk5ArpG2D/LD9eMhiW35r2xY4MOKzaoMOeMjrUaOGi+ZYk01Gm0s7xmvoxwtopXn4pJts= ivan@ivan-megabookt1"
 
 
   tasks:
     - name: Ensure common group exists
-      group:
+      ansible.builtin.group:
         name: "{{ common_group }}"
         state: present
 
     - name: Install sudo
-      apt:
+      ansible.builtin.apt:
         name: sudo
         state: present
 
     - name: Ensure users exist with their home directories and in common group
-      user:
+      ansible.builtin.user:
         name: "{{ item.name }}"
         shell: /bin/bash
         create_home: yes
@@ -52,7 +54,7 @@
       loop: "{{ users }}"
 
     - name: Ensure .ssh directory exists for each user
-      file:
+      ansible.builtin.file:
         path: "/home/{{ item.name }}/.ssh"
         state: directory
         owner: "{{ item.name }}"
@@ -69,7 +71,7 @@
       loop: "{{ users }}"
       
     - name: Configure passwordless sudo for the common group
-      copy:
+      ansible.builtin.copy:
         dest: "{{ sudoers_file }}"
         content: "%{{ common_group }} ALL=(ALL) NOPASSWD: ALL"
         owner: root

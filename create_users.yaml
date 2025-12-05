@@ -3,34 +3,13 @@
   hosts: all
   become: yes
   vars:
-    common_group: runtel-support  # Имя общей группы
+    common_group: psup-re  # Имя общей группы
     sudoers_file: "/etc/sudoers.d/90-{{ common_group }}-nopasswd"  # Файл sudoers
     users:
-      - name: ipetrov
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCvG8EYpD6tuMIaz7laKO0rS3M31AzQmP392NvL1aAj2ws+K+a3kgTtC7u6TpLmTsIgbmBdAk220PPYFCUtTO2UMB+u/EkJza4MCn+6LswMB9BnobEupKU0bYUnxTlQu5Fwxo1swcz18Ha8i0nHRsiOdRzbHUMe75ObdA8cnsc51W+jv1xtVekufE1qH+FhFr8gkRnnxM/w8c9ucg1Ut07+peYulrEsu+9Kq6t54vYDpE2+uVf084RnlG3Q9sP8KOLq5t3y0BTwBMSH0IGYlXfePVOwjcuhL9oA+0NpKF0BQwXd6VV/LtAJSVsJjQicYlgaRtfHfyoPWNEj9Y2vQG6J"
-      - name: alagutin
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAz9fXNQ72rHLl1wFIqBRl5r+OFSQKGJcCPvJv8F2alD7+UFQ2+brnRHJoWc2rcZ7+0ZBLpjKX6kiFiMjSHtBGLc2WcrzlbGkJQ7AN6FEEeVWRxhUdCTaPPfOLKHUzmqTOuY98XbaBF67dT5HTvcwN1NG+vNPM046xvHzd9kGknZE0/gXxKeinYfnsvBbMOIl5BiN3cLYA6ttadm+EZu2oUPHVWimo/3k7Or2YWKwxBpIOfgbXNNIQBfrKogcfxLaryTlpu7KnYfmStVep5e8aXPVrzYRqbfMWH9qOfj8rpvrSf21I4eE4y7ggFk1Ike0zDrfEghgV4s82gZkmiRTNkw=="
-      - name: dmedvedev
-        ssh_key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDhZEhtCIhR0H93CPw8W2VQNMe4u+cUgfv+ek1qFwdFm dmitriy-medvedev@dmitriy-medvedev-MEGABOOK-T1"
-      - name: fzasorin
-        ssh_key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBF2QL1urBRNCdOu/RkOnSdPtkIg7EPd2icgD3AJwbVS felix@felix-BMH-WDX9"
-      - name: kkorablin
-        ssh_key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG4GcMVz9cKgtZHsEwGcy+Z2+mxhh6anhzm9IFzA1E2r kirill@kiko0217"
-      - name: agarbuzov
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAo0mOuZ8QSuf7fZX3TPUBUX2b5eYIuX2+DntE1sMm6kfyPOv+bkC/0XSUWOy6u7yPEzSqPLZOYdNNocalOUx16Hw7hs2nZxswOOBJyKkwEUD+Fd3XRHzWGSx+nghOaHRHVm/w/vf90mWzhuhJ4Kx19/EvTh23vUfxHhjtmBuKQxG96pg919yr7GPU1Cw9NcZYuD5+/ZkH9OHLcWNIdd2L7isICniHhw++ylT3IxhlS+J2WuEgPU0pRzLmvHmwJ998RXsvpR8MYA3Zn139P71b+2zodDKgps3Yq7SDPboHp+ZRUfXYv6UORZD/D7o+HcaIK6xfhPiHyTlud64IWlpBIQ=="
-      - name: cgnezdilov
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCvltXmz4G2Si/mZaznRrMEgXNK/fLsWEw4INmrD07aVKE1SqixXVaXeONO5dyaYZdBI8mqvx1OjFO9Ayl2jJd6uqszlvVMcp1Nvho69EIDLNbezHrzUOt8zGcGgSbWeHs5y0HH3V+q/I0JFx69lrppEvSXWA+JNdFWg2cUejlAqT5omOI95GmZ/mfq0jeDkIe8fFj59vEZ1VgPi/KGoJttppdDR1ZOT3a7Ji7/1uFyuNQroenxOt1cyjqcdkpGX12vEo1FUjghzejJCUn2N++T53gK8mnuJEh94yTU7wO1bzbkMKLA068P0nQKmCT0HSlz1Mz3+zrI5d5gh6AreDixFT1WtAoksS0tE/XWM+Ipj4ZNDDovU/d16QyvsBuZEu8jKcgX9jGER4sEaHHJ5csTux6KMHD7jfBG2XU47RSG8N5o3wF7RcbNmU+hiLr+RpOy9XwK6n4IgDDX7/mxFOYLAwGGez1wcw9dvIEXaiDI+IRGxZR/yZN2VTncx5PEEqM= mrc@czar-pc"
-      - name: bkosukhin
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCwplLCCNxNyc/IpK5dZu6L6HKz86AKXh5qq+2Odpj6GGblxDJIU98vIOEoH0E6UWWlyfusQZyLBvSPAQiZVlLdwDQlH4XE2C+3HIJ+5uuaDSnnvqI/37GelxdkD/vNmtxuCA9M5o05jqPHITHA1QuJaJqcLCJFunvLVFBu2O8Y6FoOekrOIh7oyy5sGMk9PzaTTQ/dfNzAcopzyHOCCr5oPBwc6zllRXaQ1uc1GePONGA99/GHlMTqPmvNxKVeepQiQs/yZt3Thor/Tz0dei0GHRiRvpka3zWKcQZjnejbVbTlKpldDf74KJeLr0DEJK6+QffNU2U0kOp+kWq34DrI7Hu7vUUH+w0sCjClrqX7Fu28rimFmxbw6BLdMCmUe3gmlvGbQl0xv5835JmRCmHIlUnWc78QViBwnGRT1n3GyLwgXh3thpr/4slKEWwpnrxtMiG8nZaES93LpJ6bHh4k43n8RbrCTGmEBV8Ms78T/bk3eVwtQ0oOIB0muQsC4GE= bogdan@bogdan-BMH-WDX9"
-      - name: apanyovin
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCeYT7lnh58wyxUhxcxpgCHONVSs9fXalUSZ0IDB1R9GNWeqwoB2HXKixdXBqbSyDFBg2OR11+dRQNw3QTGveYehiFQnK8QjlNi0Sgy8TA0sthslqfzzSn5dkeon6ZcIPTLuX9pVwXKJHuMBVWgvO2YY4GZ+kZ8oTthiT23Gn7sjrQvRu18hLPxtxm0e8lh5EYZXSbkzrws21yOtCX8k4zdqK1h9EcGv8kg4u4Dx7DSKCJVKd9ifaohgScOmk9igPIaC/ZHGZj2dLt0/mQZ0nlfuHaoMIWr93282wV6ljmXXbMlnM3p+rdQgv18EUCl4y0v2GV3MRD3TEE8+aYHwOfL apany@DESKTOP-M6H3CD0"
-      - name: kpolyga
-        ssh_key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICs2D9gDCisPyK8PebbaQCTqI5Rrmn1yrXXqLG1FDa0o kirill_p@kirill-bmhwdx9"
-      - name: vyartsev
-        ssh_key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIMcztse1AO+7KCBxq2abuvNlQIbAh7KMt/kh/6hRlhb vyache@vyache"
-      - name: kovalev
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDULgE4kNJ3nhguJk8TegZymS/ZOIeWwG61ehQ77QnlpKjXPoB4GHCp83qh9YbHc2YuES3BLnqYB2+MqAmEVWSPslMzzh2SqIwZuTqDWcTlDIOZHVBd8OwINyVdLKc+OmUW2hiDpuISpq3h5CKlUQ9VWSR4XC2ri0nvCln9R9ReCj8yV5fBMsOIZnbo3n52I46HJ/09o27dPxxbyLTq8UOA3PBBA25ZwL7kludosTamB4xMnIP/nToCf97L7BpjWIVuvcp7Zw6apr5HeEl1Ss7VIHPeVzg73+SdjaC9o3nS9fo8nmHpbosh5KpebtZskq+vx9wzFHvTh67y3ZLcymT64oJDl5pqoCK8/N+9eFatt2w5u6iZrCndLQQCiO8UQVXzEZFw4LkI2xuz15t2kVnrSoZ4H6beob5LgYjuwr010tIECLDJAdnuIHv70czk5ArpG2D/LD9eMhiW35r2xY4MOKzaoMOeMjrUaOGi+ZYk01Gm0s7xmvoxwtopXn4pJts= ivan@ivan-megabookt1"
-
+      - name: alni0613
+        ssh_key: "<SSH_key_alni0613>"
+      - name: kiko0217
+        ssh_key: "<SSH_key_kiko0217>"
 
   tasks:
     - name: Ensure common group exists

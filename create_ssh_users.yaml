@@ -56,3 +56,7 @@
         owner: root
         group: root
         mode: '0740'
+
+# По умолчанию не хватает модуля
+# ansible-galaxy collection install ansible.posix
+# или конкретную версию   ansible-galaxy collection install ansible.posix:1.4.0

@@ -1,4 +1,4 @@
-Чтобы устанвоить зависимости/коллекции
+Чтобы установить зависимости/коллекции
 ```bash
 ansible-galaxy collection install -r requirements.yml
 ansible-galaxy collection install ansible.posix

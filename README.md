@@ -1,6 +1,7 @@
 Чтобы устанвоить зависимости
 ```bash
 ansible-galaxy collection install -r requirements.yml
+ansible-galaxy collection install ansible.posix
 ```
 
 Чтобы запустить Ad-Hoc команду с указанием сервера 178.178.73.149, используйте следующую команду:
